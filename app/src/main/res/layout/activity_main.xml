@@ -10,5 +10,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTarjetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese las tarjetas"
+            android:inputType="textMultiLine"
+            android:layout_gravity="bottom"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Aceptar" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIVE" />
+
+        <TextView
+            android:id="@+id/textViewLive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="--No se ingresaron--" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DIE" />
+
+        <TextView
+            android:id="@+id/textViewDie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="--No se ingresaron--" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
