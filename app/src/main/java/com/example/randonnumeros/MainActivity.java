@@ -3,6 +3,7 @@ package com.example.randonnumeros;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,13 +49,35 @@ public class MainActivity extends AppCompatActivity {
 
 //            notificacion=Toast.makeText(this,cadena,Toast.LENGTH_LONG);
 //            notificacion.show();
+
+            // recupero cortando por el salto de linea
             String[] subStrings = cadena.split("\n");
+            // recorro y guardo en mi arraylist
             for(String s : subStrings){
                 lista.add(s);
             }
+            // desordeno
             Collections.shuffle(lista);
 //            notificacion=Toast.makeText(this,lista.toString(),Toast.LENGTH_LONG);
 //            notificacion.show();
+
+            String aux1 = "";
+            String aux2 = "";
+            // recorro la lista randomizada para mostrarla
+            for (int i = 0; i < lista.size(); i++) {
+                //System.out.println(list.get(i));
+
+                if (i < (lista.size() + 1)/2)
+                    aux1 += lista.get(i)+"\n";
+                else
+                    aux2 += lista.get(i)+"\n";
+                //Log.i("Results", lista.get(i));
+
+            }
+            // muestro la lista de live
+            tv1.setText(aux1);
+            // muestro la lista de
+            tv2.setText(aux2);
         }
     }
 }
