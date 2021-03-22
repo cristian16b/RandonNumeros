@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             for(String s : subStrings){
                 lista.add(s);
             }
+            Collections.shuffle(lista);
+//            notificacion=Toast.makeText(this,lista.toString(),Toast.LENGTH_LONG);
+//            notificacion.show();
         }
     }
 }
