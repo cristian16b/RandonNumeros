@@ -3,9 +3,11 @@ package com.example.randonnumeros;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText et1;
     private TextView tv1;
     private TextView tv2;
+    private ProgressBar PB;
 
 
     @Override
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         et1=findViewById(R.id.editTextTarjetas);
         tv1=findViewById(R.id.textViewLive);
         tv2=findViewById(R.id.textViewDie);
+
+        PB = (ProgressBar) findViewById(R.id.progressBar);
+        PB.setVisibility(View.GONE);
     }
 
     //Este método se ejecutará cuando se presione el botón
@@ -43,6 +49,30 @@ public class MainActivity extends AppCompatActivity {
             notificacion = Toast.makeText(this,"Debe ingresar al menos una linea",Toast.LENGTH_LONG);
             notificacion.show();
         } else {
+            PB.setVisibility(View.VISIBLE);
+
+            // Create a Handler instance on the main thread
+            Handler handler = new Handler();
+
+            // Create and start a new Thread
+                        new Thread(new Runnable() {
+                            public void run() {
+                                try{
+                                    Thread.sleep(500);
+                                }
+                                catch (Exception e) { } // Just catch the InterruptedException
+
+                                // Now we use the Handler to post back to the main thread
+                                handler.post(new Runnable() {
+                                    public void run() {
+                                        // Set the View's visibility back on the main UI Thread
+                                        PB.setVisibility(View.INVISIBLE);
+                                        PB.setVisibility(View.GONE);
+                                    }
+                                });
+                            }
+                        }).start();
+
             lista.clear();
             tv1.setText("");
             tv2.setText("");
